@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROYAL FORTUNE CLUB| Преміум Онлайн Казино</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-crown logo-icon"></i>
+        <div class="logo-text">ROYAL <span>FORTUNE CLUB</span></div>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#slots" class="nav-link active"><i class="fa-solid fa-gamepad"></i> Слоти</a>
+        <a href="#wheel" class="nav-link"><i class="fa-solid fa-dharmachakra"></i> Колесо Фортуни</a>
+        <a href="#tournament" class="nav-link"><i class="fa-solid fa-trophy"></i> Турніри</a>
+        <a href="#minislot" class="nav-link"><i class="fa-solid fa-bolt"></i> Міні-Слот</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="balance-badge">
+          <span class="balance-label">Баланс:</span>
+          <span class="balance-value" id="userBalanceHeader">1,000 ₴</span>
+          <button class="btn-topup-header" onclick="openDepositModal()" title="Поповнити баланс">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+
+        <button class="btn-deposit-header" onclick="openDepositModal()">
+          <i class="fa-solid fa-wallet"></i> <span>Поповнити</span>
+        </button>
+
+        <button class="btn-user-profile" onclick="openProfileModal()" title="Особистий Кабінет">
+          <i class="fa-solid fa-user-circle"></i>
+          <span id="headerProfileLabel">Акаунт</span>
+        </button>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="logo-text">ROYAL <span>FORTUNE</span></div>
+      <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="drawer-nav">
+      <a href="#slots" class="drawer-link"><i class="fa-solid fa-gamepad"></i> Слоти</a>
+      <a href="#wheel" class="drawer-link"><i class="fa-solid fa-dharmachakra"></i> Колесо Фортуни</a>
+      <a href="#tournament" class="drawer-link"><i class="fa-solid fa-trophy"></i> Турніри</a>
+      <a href="#minislot" class="drawer-link"><i class="fa-solid fa-bolt"></i> Міні-Слот</a>
+      <a href="javascript:void(0)" onclick="openProfileModal()" class="drawer-link"><i class="fa-solid fa-user"></i> Вхід / Реєстрація</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- 1. HERO БАННЕР -->
+    <section class="hero-section">
+      <div class="hero-bg-glow"></div>
+      <div class="hero-container">
+        <div class="hero-text">
+          <div class="vip-badge"><i class="fa-solid fa-star"></i> Ексклюзивний Вітальний Бонус</div>
+          <h1 class="hero-title">ОТРИМУЙ ДО <span>150,000 ₴</span> + 300 FS</h1>
+          <p class="hero-desc">Випробуй свою удачу на найкращих ліцензованих слотах світу. Миттєві виплати 24/7 та максимальні коефіцієнти!</p>
+          
+          <div class="jackpot-card">
+            <div class="jackpot-title"><i class="fa-solid fa-trophy"></i> ПРОГРЕСИВНИЙ ДЖЕКПОТ</div>
+            <div class="jackpot-amount" id="jackpotCounter">14,285,940 ₴</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ПЕРЕВАГИ КАЗИНО -->
+    <section class="features-section">
+      <div class="section-container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fa-solid fa-bolt-lightning feature-icon"></i>
+            <h3>Миттєві Виплати</h3>
+            <p>Виведення коштів на картки UA та Crypto протягом 5 хвилин без комісій.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-shield-halved feature-icon"></i>
+            <h3>100% Безпека</h3>
+            <p>Ліцензований софт з використанням SSL-шифрування банківського рівня.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-headset feature-icon"></i>
+            <h3>Підтримка 24/7</h3>
+            <p>Оператори онлайн у Telegram та живий чат цілодобово без вихідних.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fa-solid fa-gift feature-icon"></i>
+            <h3>Щотижневий Кешбек</h3>
+            <p>Повертаємо до 15% від програних коштів щопонеділка без вейджера.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ІГРОВИЙ КАТАЛОГ -->
+    <section class="games-section" id="slots">
+      <div class="section-container">
+        <div class="games-header-bar">
+          <h2 class="section-title"><i class="fa-solid fa-fire"></i> ПОПУЛЯРНІ <span>ІГРИ</span></h2>
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="gameSearch" placeholder="Пошук гри..." onkeyup="filterGames()">
+          </div>
+        </div>
+
+        <div class="categories-wrapper">
+          <button class="cat-btn active" onclick="selectCategory('all', this)"><i class="fa-solid fa-border-all"></i> Всі</button>
+          <button class="cat-btn" onclick="selectCategory('slots', this)"><i class="fa-solid fa-gamepad"></i> Слоти</button>
+          <button class="cat-btn" onclick="selectCategory('cards', this)"><i class="fa-solid fa-spade"></i> Карткові</button>
+          <button class="cat-btn" onclick="selectCategory('live', this)"><i class="fa-solid fa-headset"></i> Live Рулетка</button>
+          <button class="cat-btn" onclick="selectCategory('popular', this)"><i class="fa-solid fa-star"></i> Популярні</button>
+        </div>
+
+        <div class="games-grid" id="gamesGrid">
+          <div class="game-card" data-category="slots popular" data-name="Gates of Olympus">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=600&q=80" alt="Gates of Olympus">
+              <div class="game-badge hot">HOT</div>
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Gates of Olympus', 'slot')"><i class="fa-solid fa-play"></i> Грати</button>
+                <button class="btn-demo" onclick="playGameModal('Gates of Olympus (Demo)', 'slot')">Демо</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Gates of Olympus</div>
+              <div class="game-provider">Pragmatic Play</div>
+            </div>
+          </div>
+
+          <div class="game-card" data-category="slots popular" data-name="Sweet Bonanza">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Sweet Bonanza">
+              <div class="game-badge top">TOP</div>
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Sweet Bonanza', 'slot')"><i class="fa-solid fa-play"></i> Грати</button>
+                <button class="btn-demo" onclick="playGameModal('Sweet Bonanza (Demo)', 'slot')">Демо</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Sweet Bonanza</div>
+              <div class="game-provider">Pragmatic Play</div>
+            </div>
+          </div>
+
+          <div class="game-card" data-category="live popular" data-name="Lightning Roulette">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=600&q=80" alt="Roulette">
+              <div class="game-badge live">LIVE</div>
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Lightning Roulette', 'roulette')"><i class="fa-solid fa-play"></i> Грати</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Lightning Roulette</div>
+              <div class="game-provider">Evolution Gaming</div>
+            </div>
+          </div>
+
+          <div class="game-card" data-category="cards popular" data-name="Blackjack VIP">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&w=600&q=80" alt="Blackjack">
+              <div class="game-badge top">CARD</div>
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Blackjack VIP', 'cards')"><i class="fa-solid fa-play"></i> Грати</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Blackjack VIP</div>
+              <div class="game-provider">Ezugi</div>
+            </div>
+          </div>
+
+          <div class="game-card" data-category="slots" data-name="Book of Dead">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Book of Dead">
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Book of Dead', 'slot')"><i class="fa-solid fa-play"></i> Грати</button>
+                <button class="btn-demo" onclick="playGameModal('Book of Dead (Demo)', 'slot')">Демо</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Book of Dead</div>
+              <div class="game-provider">Play'n GO</div>
+            </div>
+          </div>
+
+          <div class="game-card" data-category="slots popular" data-name="Sugar Rush">
+            <div class="game-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?auto=format&fit=crop&w=600&q=80" alt="Sugar Rush">
+              <div class="game-badge hot">HOT</div>
+              <div class="game-overlay">
+                <button class="btn-play" onclick="playGameModal('Sugar Rush', 'slot')"><i class="fa-solid fa-play"></i> Грати</button>
+              </div>
+            </div>
+            <div class="game-info">
+              <div class="game-title">Sugar Rush</div>
+              <div class="game-provider">Pragmatic Play</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ЩОДЕННЕ КОЛЕСО ФОРТУНИ -->
+    <section class="wheel-section" id="wheel">
+      <div class="section-container">
+        <div class="wheel-card">
+          <div class="wheel-info">
+            <h2><i class="fa-solid fa-dharmachakra"></i> ЩОДЕННЕ <span>КОЛЕСО ФОРТУНИ</span></h2>
+            <p>Крути колесо щодня безкоштовно та вигравай реальні гроші, фріспіни або бонуси на депозит!</p>
+            <button class="btn-spin-wheel" id="spinWheelBtn" onclick="spinFortuneWheel()">КРУТИТИ КОЛЕСО</button>
+            <div class="wheel-msg" id="wheelMsg">Натисніть кнопку, щоб випробувати удачу!</div>
+          </div>
+          <div class="wheel-visual">
+            <div class="wheel-pointer">▼</div>
+            <div class="wheel-disc" id="wheelDisc">
+              <div class="wheel-segment" style="--i:1;--clr:#ffd700;"><span>500 ₴</span></div>
+              <div class="wheel-segment" style="--i:2;--clr:#1a1a26;"><span>10 FS</span></div>
+              <div class="wheel-segment" style="--i:3;--clr:#00f2fe;"><span>1000 ₴</span></div>
+              <div class="wheel-segment" style="--i:4;--clr:#1a1a26;"><span>50 FS</span></div>
+              <div class="wheel-segment" style="--i:5;--clr:#ff4d4d;"><span>2500 ₴</span></div>
+              <div class="wheel-segment" style="--i:6;--clr:#1a1a26;"><span>100 FS</span></div>
+              <div class="wheel-segment" style="--i:7;--clr:#00ff88;"><span>5000 ₴</span></div>
+              <div class="wheel-segment" style="--i:8;--clr:#7928ca;"><span>VIP BONUS</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ТУРНІРИ (ТОП-10 З ЖИВИМ ТАЙМЕРОМ) -->
+    <section class="tournament-section" id="tournament">
+      <div class="section-container">
+        <div class="section-header-centered">
+          <h2><i class="fa-solid fa-trophy"></i> ТИЖНЕВИЙ <span>ТУРНІР СЛОТІВ</span></h2>
+          <p>Призовий фонд: <strong>500,000 ₴</strong> | До кінця: <span class="timer-badge" id="tournamentLiveTimer">02d 14h 35m 10s</span></p>
+        </div>
+        <div class="tournament-leaderboard">
+          <div class="leaderboard-item rank-1"><span class="rank">#1 🥇</span><span class="player">Alex_Winner</span><span class="points">142,500 балів</span><span class="prize">150,000 ₴</span></div>
+          <div class="leaderboard-item rank-2"><span class="rank">#2 🥈</span><span class="player">LuckyKing777</span><span class="points">98,200 балів</span><span class="prize">100,000 ₴</span></div>
+          <div class="leaderboard-item rank-3"><span class="rank">#3 🥉</span><span class="player">CasinoQueen</span><span class="points">74,100 балів</span><span class="prize">50,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#4</span><span class="player">Dmitry_PRO</span><span class="points">61,400 балів</span><span class="prize">30,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#5</span><span class="player">Sergey_UA</span><span class="points">52,100 балів</span><span class="prize">20,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#6</span><span class="player">FortuneHunter</span><span class="points">44,800 балів</span><span class="prize">15,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#7</span><span class="player">Viktoria_Gold</span><span class="points">38,200 балів</span><span class="prize">10,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#8</span><span class="player">MaxSpin</span><span class="points">31,900 балів</span><span class="prize">8,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#9</span><span class="player">Sultan77</span><span class="points">27,400 балів</span><span class="prize">5,000 ₴</span></div>
+          <div class="leaderboard-item"><span class="rank">#10</span><span class="player">Roman_Lucky</span><span class="points">22,000 балів</span><span class="prize">3,000 ₴</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. МІНІ-СЛОТ З ЗМЕНШЕНОЮ ВИСОТОЮ ТА СТРІЛКОЮ НА СЕРЕДИНІ -->
+        <section class="slot-section" id="minislot">
+    <div class="section-container">
+        <div class="mini-slot-card compact-wide-slot">
+        <div class="slot-header">
+            <h3><i class="fa-solid fa-bolt"></i> ROYAL MINI SLOT 3x3 WIDE</h3>
+            <span class="slot-subtitle">Широкоформатний апарат із відсотком віддачі RTP 98.4%</span>
+        </div>
+
+        <div class="slot-balance-bar">
+            <span>Баланс у слоті: <strong id="userBalanceSlot">1,000 ₴</strong></span>
+        </div>
+
+        <div class="slot-window grid-3x3-window">
+            <div class="center-payline-arrow left">▶</div>
+            <div class="center-payline-arrow right">◀</div>
+            <div class="reel-container">
+            <div class="reel-viewport"><div class="reel-strip" id="strip1"></div></div>
+            <div class="reel-viewport"><div class="reel-strip" id="strip2"></div></div>
+            <div class="reel-viewport"><div class="reel-strip" id="strip3"></div></div>
+            </div>
+        </div>
+
+        <div class="slot-msg" id="slotMsg">Обери ставку та тисни КРУТИТИ!</div>
+
+        <div class="bet-control-panel">
+            <div class="bet-label-row">
+            <span>Розмір ставки:</span>
+            <span class="current-bet-display" id="currentBetDisplay">50 ₴</span>
+            </div>
+
+            <div class="quick-bets">
+            <button class="btn-quick-bet" onclick="setBet(10)">10 ₴</button>
+            <button class="btn-quick-bet active" onclick="setBet(50)">50 ₴</button>
+            <button class="btn-quick-bet" onclick="setBet(100)">100 ₴</button>
+            <button class="btn-quick-bet" onclick="setBet(500)">500 ₴</button>
+            <button class="btn-quick-bet" onclick="setBet(1000)">1000 ₴</button>
+            </div>
+
+            <div class="manual-bet-row">
+            <button class="btn-step" onclick="changeBet(-10)"><i class="fa-solid fa-minus"></i></button>
+            <div class="bet-value-box" id="betBoxValue">50 ₴</div>
+            <button class="btn-max-bet" onclick="setMaxBet()">MAX</button>
+            </div>
+        </div>
+
+        <button class="btn-spin" id="spinBtn" onclick="spinSlot()">
+            <span>КРУТИТИ!</span>
+            <i class="fa-solid fa-rotate-right"></i>
+        </button>
+        </div>
+    </div>
+    </section>
+
+    <!-- 7. ЖИВИЙ ПОТІК ПЕРЕМОЖЦІВ (БАГАТО ГРАВЦІВ) -->
+    <section class="live-winners-section">
+      <div class="section-container">
+        <h3 class="winners-title"><i class="fa-solid fa-chart-line"></i> ЖИВИЙ ПОТІК <span>ВИГРАШІВ ГРАВЦІВ</span></h3>
+        <div class="winners-ticker-wrapper">
+          <div class="winners-ticker-track" id="winnersTickerTrack">
+            <div class="winner-item"><span class="w-user">Олександр В.</span> <span class="w-game">Gates of Olympus</span> <span class="w-amount">+12,400 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Максим К.</span> <span class="w-game">Sweet Bonanza</span> <span class="w-amount">+45,000 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Ірина П.</span> <span class="w-game">Lightning Roulette</span> <span class="w-amount">+8,500 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Богдан С.</span> <span class="w-game">Book of Dead</span> <span class="w-amount">+19,200 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Вікторія М.</span> <span class="w-game">Sugar Rush</span> <span class="w-amount">+33,000 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Сергій Л.</span> <span class="w-game">Blackjack VIP</span> <span class="w-amount">+14,100 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Андрій Т.</span> <span class="w-game">Gates of Olympus</span> <span class="w-amount">+50,000 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Ольга К.</span> <span class="w-game">Sweet Bonanza</span> <span class="w-amount">+7,200 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Дмитро Р.</span> <span class="w-game">Book of Dead</span> <span class="w-amount">+22,500 ₴</span></div>
+            <div class="winner-item"><span class="w-user">Катерина Б.</span> <span class="w-game">Sugar Rush</span> <span class="w-amount">+11,000 ₴</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. ВІДГУКИ -->
+    <section class="reviews-section">
+      <div class="section-container">
+        <div class="section-header-centered">
+          <h2><i class="fa-solid fa-comments"></i> ВІДГУКИ <span>ПЕРЕМОЖЦІВ</span></h2>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>«Вивів 45,000 грн за 3 хвилини на карту Монобанку! Найкраще казино в Україні, віддача супер.»</p>
+            <div class="review-author">— Олег В., м. Київ</div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>«Міні-слот знизу просто пушка! Накрутив з бонуса 10к грн, дякую підтримці в Телеграмі.»</p>
+            <div class="review-author">— Андрій К., м. Львів</div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p>«Граю півроку, VIP статус дає крутий кешбек щопонеділка. Рекомендую всім!»</p>
+            <div class="review-author">— Тетяна М., м. Одеса</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vip-section" id="vip">
+      <div class="section-container">
+        <div class="vip-card-banner">
+          <div class="vip-text">
+            <h2>ПРИЄДНУЙСЯ ДО <span>ROYAL VIP CLUB</span></h2>
+            <p>Отримуй підвищений кешбек, персонального менеджера та ексклюзивні подарунки на день народження.</p>
+          </div>
+          <button class="btn-vip-join" onclick="openDepositModal()">СТАТИ VIP</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FAQ -->
+    <section class="faq-section">
+      <div class="section-container">
+        <div class="section-header-centered">
+          <h2><i class="fa-solid fa-circle-question"></i> ЧАСТІ <span>ЗАПИТАННЯ (FAQ)</span></h2>
+        </div>
+        <div class="faq-accordion">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Як швидко виводяться виграні кошти? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Виплати обробляються автоматично цілодобово. На картки українських банків кошти надходять від 1 до 5 хвилин.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Чи потрібна верифікація для виведення? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Для виведення сум до 20,000 ₴ верифікація не потрібна. Для більших сум діє швидка перевірка через Дія за 1 хвилину.</div>
+          </div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Як отримати вітальний бонус 150,000 ₴? <i class="fa-solid fa-chevron-down"></i></div>
+            <div class="faq-answer">Бонус нараховується автоматично після першого депозиту від 100 ₴ у розділі Каса.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ФУТЕР ІЗ ОПИСОМ ФУНКЦІЇ КАСИ ТА ДЕПОЗИТУ -->
+  <footer class="footer" id="contacts">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-text">ROYAL <span>FORTUNE</span></div>
+        <p>Преміальна онлайн-платформа розваг. Ліцензований контент та найвища безпека даних.</p>
+        <div class="founder-info">
+          <h4><i class="fa-solid fa-user-tie"></i> Засновник &amp; CEO</h4>
+          <p><strong>Ім'я:</strong> Копинець Роман</p>
+          <p><strong>Email:</strong> <a href="mailto:founder@royalfortune.com">romakopinest1@gmail.com</a></p>
+          <p><strong>Тел:</strong> <a href="tel:+380441234567">+380 (68) 228-30-44</a></p>
+        </div>
+      </div>
+
+      <div class="footer-col links-col">
+        <h4>Навігація</h4>
+        <ul class="interactive-footer-nav">
+          <li>
+            <a href="javascript:void(0)" onclick="toggleFooterSubmenu('subSlots')"><i class="fa-solid fa-angle-right"></i> Популярні Слоти</a>
+            <div class="footer-subpanel" id="subSlots">Топові слоти від Pragmatic Play та Evolution. Натисніть "Слоти" в меню вище для фільтрації!</div>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="toggleFooterSubmenu('subVip')"><i class="fa-solid fa-angle-right"></i> VIP Привілеї</a>
+            <div class="footer-subpanel" id="subVip">Персональні бонуси, квитки на турніри та кешбек до 15% щопонеділка.</div>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="toggleFooterSubmenu('subMini')"><i class="fa-solid fa-angle-right"></i> Міні-Слот</a>
+            <div class="footer-subpanel" id="subMini">Наш ексклюзивний широкоформатний апарат 3x3 внизу сайту з миттєвими виграшами!</div>
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="toggleFooterSubmenu('subCashier')"><i class="fa-solid fa-angle-right"></i> Каса та Депозит</a>
+            <div class="footer-subpanel" id="subCashier"><strong>Функціонал Каси:</strong> Розділ відповідає за захищені фінансові операції: миттєве поповнення рахунку через картки (Visa, Mastercard, Privat24, Mono), Apple/Google Pay та Crypto, а також обробку запитів на виведення виграних коштів за 1-5 хвилин без комісії.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col social-col">
+        <h4>Ми в соцмережах</h4>
+        <p>Підписуйтесь, щоб отримувати ексклюзивні промокоди та бездепозитні фріспіни!</p>
+        <div class="social-links-grid">
+          <a href="https://t.me/vulkan_22" target="_blank" class="social-btn telegram" title="Telegram"><i class="fa-brands fa-telegram"></i> <span>Telegram</span></a>
+          <a href="https://www.instagram.com/kvrms.x/" target="_blank" class="social-btn instagram" title="Instagram"><i class="fa-brands fa-instagram"></i> <span>Instagram</span></a>
+          <a href="https://www.youtube.com/@Lev_Stayy" target="_blank" class="social-btn youtube" title="YouTube"><i class="fa-brands fa-youtube"></i> <span>YouTube</span></a>
+          <a href="https://www.tiktok.com/@romaxa055" target="_blank" class="social-btn tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i> <span>TikTok</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-middle">
+      <div class="footer-payments">
+        <i class="fa-brands fa-cc-visa"></i>
+        <i class="fa-brands fa-cc-mastercard"></i>
+        <i class="fa-brands fa-apple-pay"></i>
+        <i class="fa-brands fa-google-pay"></i>
+        <i class="fa-brands fa-bitcoin"></i>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 ROYAL FORTUNE Casino. Всі права захищені. 18+ Грайте відповідально.
+    </div>
+  </footer>
+
+  <div class="mobile-bottom-nav">
+    <a href="#slots" class="mob-nav-item active"><i class="fa-solid fa-gamepad"></i> <span>Слоти</span></a>
+    <a href="#wheel" class="mob-nav-item"><i class="fa-solid fa-dharmachakra"></i> <span>Колесо</span></a>
+    <button class="mob-nav-item deposit-btn-mob" onclick="openDepositModal()"><div class="mob-dep-icon"><i class="fa-solid fa-wallet"></i></div> <span>Депозит</span></button>
+    <a href="#minislot" class="mob-nav-item"><i class="fa-solid fa-bolt"></i> <span>Слот</span></a>
+    <a href="javascript:void(0)" onclick="openProfileModal()" class="mob-nav-item"><i class="fa-solid fa-user"></i> <span>Профіль</span></a>
+  </div>
+
+  <!-- МОДАЛЬНЕ ВІКНО АВТОРИЗАЦІЇ / РЕЄСТРАЦІЇ / КАБІНЕТУ -->
+  <div class="modal-backdrop" id="profileModal">
+    <div class="modal-card profile-card">
+      <button class="modal-close" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div id="authContainer">
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" onclick="switchAuthTab('login')">Вхід</button>
+          <button class="auth-tab-btn" onclick="switchAuthTab('register')">Реєстрація</button>
+        </div>
+
+        <div class="auth-form-panel" id="loginPanel">
+          <div class="input-group">
+            <label>Логін або Email</label>
+            <input type="text" id="loginUser" placeholder="vlad_royal">
+          </div>
+          <div class="input-group">
+            <label>Пароль</label>
+            <input type="password" id="loginPass" placeholder="••••••••">
+          </div>
+          <button class="btn-confirm-deposit" onclick="performLogin()">УВІЙТИ В АКАУНТ</button>
+        </div>
+
+        <div class="auth-form-panel" id="registerPanel" style="display:none;">
+          <div class="input-group">
+            <label>Email адреса</label>
+            <input type="email" id="regEmail" placeholder="user@gmail.com">
+          </div>
+          <div class="input-group">
+            <label>Логін</label>
+            <input type="text" id="regUser" placeholder="lucky_player">
+          </div>
+          <div class="input-group">
+            <label>Пароль</label>
+            <input type="password" id="regPass" placeholder="Створіть пароль">
+          </div>
+          <button class="btn-confirm-deposit" onclick="performRegister()">СТВОРИТИ АКАУНТ</button>
+        </div>
+      </div>
+
+      <!-- Особистий кабінет -->
+      <div id="userCabinetContainer" style="display:none;">
+        <div class="profile-header">
+          <div class="profile-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+          <div class="profile-info">
+            <h3 id="cabinetUsername">Копинець Роман</h3>
+            <span class="profile-id" id="cabinetEmail">romakopinest1@gmail.com</span>
+            <span class="profile-badge-vip"><i class="fa-solid fa-gem"></i> VIP Gold Status</span>
+          </div>
+        </div>
+
+        <div class="profile-stats-grid">
+          <div class="p-stat-item">
+            <span>Баланс</span>
+            <strong id="profileBalanceDisplay">1,000 ₴</strong>
+          </div>
+          <div class="p-stat-item">
+            <span>Бонусний рахунок</span>
+            <strong style="color:var(--neon-cyan);">15,000 ₴</strong>
+          </div>
+          <div class="p-stat-item">
+            <span>Верифікація</span>
+            <strong style="color:#00ff88;"><i class="fa-solid fa-circle-check"></i> Пройдена</strong>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button class="btn-profile-act" onclick="closeProfileModal(); openDepositModal();"><i class="fa-solid fa-wallet"></i> Поповнити Касу</button>
+          <button class="btn-profile-act secondary" onclick="performLogout()"><i class="fa-solid fa-right-from-bracket"></i> Вийти з акаунта</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНЕ ВІКНО ДЕПОЗИТУ -->
+  <div class="modal-backdrop" id="depositModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeDepositModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <i class="fa-solid fa-wallet modal-icon"></i>
+        <h3>Каса та Поповнення</h3>
+        <p>Миттєве зарахування коштів</p>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label>Сума поповнення (₴)</label>
+          <input type="number" id="depositInputAmount" value="500" min="50" max="100000">
+        </div>
+        <div class="deposit-quick-buttons">
+          <button class="btn-dep-preset" onclick="setDepositPreset(100)">+100 ₴</button>
+          <button class="btn-dep-preset active" onclick="setDepositPreset(500)">+500 ₴</button>
+          <button class="btn-dep-preset" onclick="setDepositPreset(1000)">+1 000 ₴</button>
+          <button class="btn-dep-preset" onclick="setDepositPreset(5000)">+5 000 ₴</button>
+        </div>
+        <div class="payment-methods-grid">
+          <div class="pay-card active" onclick="selectPayMethod(this)"><i class="fa-solid fa-credit-card"></i> <span>Картка UA</span></div>
+          <div class="pay-card" onclick="selectPayMethod(this)"><i class="fa-brands fa-apple-pay"></i> <span>Apple / Google</span></div>
+          <div class="pay-card" onclick="selectPayMethod(this)"><i class="fa-solid fa-mobile-screen-button"></i> <span>Privat / Mono</span></div>
+          <div class="pay-card" onclick="selectPayMethod(this)"><i class="fa-brands fa-bitcoin"></i> <span>Криптовалюта</span></div>
+        </div>
+        <button class="btn-confirm-deposit" onclick="processDeposit()"><span>ПІДТВЕРДИТИ ДЕПОЗИТ</span> <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ІГРОВЕ МОДАЛЬНЕ ВІКНО -->
+  <div class="modal-backdrop" id="gameModal">
+    <div class="modal-card fullscreen-game-card">
+      <button class="modal-close" onclick="closeGameModal()"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="real-game-header">
+        <div class="real-game-title-box">
+          <h2 id="modalGameTitle">Gates of Olympus</h2>
+          <span class="real-game-badge" id="modalGameMode">РЕАЛЬНА ГРА</span>
+        </div>
+        <div class="real-game-stats">
+          <span>Баланс: <strong id="realGameBalance">1,000 ₴</strong></span>
+          <span>Виграш: <strong id="realGameWinAmt" style="color:#00ff88;">0 ₴</strong></span>
+        </div>
+      </div>
+
+      <div class="real-slot-machine" id="slotGameContainer">
+        <div class="real-slot-reels-grid" id="realSlotReelsGrid">
+          <div class="real-reel"><span id="rs1">⚡</span><span id="rs2">💎</span><span id="rs3">👑</span></div>
+          <div class="real-reel"><span id="rs4">🎰</span><span id="rs5">🔥</span><span id="rs6">🍒</span></div>
+          <div class="real-reel"><span id="rs7">👑</span><span id="rs8">7️⃣</span><span id="rs9">⚡</span></div>
+          <div class="real-reel"><span id="rs10">💎</span><span id="rs11">👑</span><span id="rs12">🎰</span></div>
+          <div class="real-reel"><span id="rs13">🔥</span><span id="rs14">🍒</span><span id="rs15">7️⃣</span></div>
+        </div>
+
+        <div class="real-slot-bottom-bar">
+          <div class="real-bet-controls">
+            <span>Ставка:</span>
+            <button onclick="adjustRealBet(-50)">-</button>
+            <span id="realBetDisplay">100 ₴</span>
+            <button onclick="adjustRealBet(50)">+</button>
+            <button class="btn-max" onclick="adjustRealBet(5000)">MAX</button>
+          </div>
+
+          <div class="real-action-btns">
+            <button class="btn-auto-spin" id="btnAutoSpin" onclick="toggleAutoSpin()">AUTO</button>
+            <button class="btn-real-spin" id="btnRealSpin" onclick="spinRealSlot()">
+              <span>ОБЕРТАТИ</span> <i class="fa-solid fa-rotate-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLACKJACK -->
+      <div class="bj-container" id="cardGameContainer" style="display:none;">
+        <div class="bj-table">
+          <div class="bj-deck-box">
+            <div class="bj-deck" id="bjDeck">
+              <div class="pcard back"></div><div class="pcard back"></div><div class="pcard back"></div><div class="pcard back"></div>
+            </div>
+            <div class="bj-deck-count">Колода: <strong id="bjDeckCount">52</strong></div>
+          </div>
+
+          <div class="bj-hands">
+            <div class="bj-hand-label">ДИЛЕР (КРУП'Є) <span class="bj-score" id="bjDealerScore"></span></div>
+            <div class="cards-row" id="dealerCardsRow"></div>
+            <div class="table-center-status" id="cardGameStatus">Оберіть ставку та натисніть РОЗДАТИ</div>
+            <div class="cards-row" id="playerCardsRow"></div>
+            <div class="bj-hand-label">ВАШІ КАРТИ <span class="bj-score" id="bjPlayerScore"></span></div>
+          </div>
+
+          <div class="bj-rules">
+            <b>Правила</b>
+            <span>Блекджек платить 3:2</span>
+            <span>Дилер бере до 17</span>
+            <span>Перемога платить 1:1</span>
+          </div>
+        </div>
+
+        <div class="bj-controls">
+          <div class="bj-bet-row">
+            <span class="bj-label">Ставка:</span>
+            <div class="bj-chips" id="bjChips">
+              <button class="casino-chip c50" onclick="bjSetBet(50)">50</button>
+              <button class="casino-chip c100 selected" onclick="bjSetBet(100)">100</button>
+              <button class="casino-chip c500" onclick="bjSetBet(500)">500</button>
+              <button class="casino-chip c1000" onclick="bjSetBet(1000)">1K</button>
+              <button class="casino-chip c5000" onclick="bjSetBet(5000)">5K</button>
+            </div>
+            <strong class="bj-bet-display" id="bjBetDisplay">100 ₴</strong>
+          </div>
+          <div class="bj-action-row">
+            <button class="bj-btn bj-deal" id="bjDealBtn" onclick="bjDeal()">РОЗДАТИ КАРТИ</button>
+            <button class="bj-btn bj-hit" id="bjHitBtn" onclick="bjHit()" disabled>ВЗЯТИ ЩЕ</button>
+            <button class="bj-btn bj-stand" id="bjStandBtn" onclick="bjStand()" disabled>СТОП</button>
+            <button class="bj-btn bj-double" id="bjDoubleBtn" onclick="bjDouble()" disabled>ПОДВОЇТИ</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- РУЛЕТКА -->
+      <div class="rl-container" id="rouletteGameContainer" style="display:none;">
+        <div class="rl-layout">
+          <div class="rl-main">
+            <div class="rl-board-scroll">
+              <div class="rl-board" id="rlBoard"></div>
+            </div>
+
+            <div class="rl-controls">
+              <span class="bj-label">Фішка:</span>
+              <div class="bj-chips" id="rlChips">
+                <button class="casino-chip c10" onclick="rlSetChip(10)">10</button>
+                <button class="casino-chip c50" onclick="rlSetChip(50)">50</button>
+                <button class="casino-chip c100 selected" onclick="rlSetChip(100)">100</button>
+                <button class="casino-chip c500" onclick="rlSetChip(500)">500</button>
+                <button class="casino-chip c1000" onclick="rlSetChip(1000)">1K</button>
+              </div>
+              <div class="rl-total">Всього на столі: <strong id="rlTotalBet">0 ₴</strong></div>
+              <div class="rl-btn-group">
+                <button class="rl-small-btn" onclick="rlUndo()"><i class="fa-solid fa-rotate-left"></i> Скасувати</button>
+                <button class="rl-small-btn" onclick="rlClear()"><i class="fa-solid fa-trash"></i> Очистити</button>
+                <button class="rl-small-btn" onclick="rlRebet()"><i class="fa-solid fa-repeat"></i> Повторити</button>
+                <button class="bj-btn bj-deal rl-spin-btn" id="rlSpinBtn" onclick="rlSpin()">КРУТИТИ</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="rl-side">
+            <div class="rl-wheel-wrap">
+              <div class="rl-pointer"></div>
+              <div class="rl-wheel" id="rlWheel"></div>
+              <div class="rl-ball-orbit" id="rlBallOrbit"><span class="rl-ball"></span></div>
+              <div class="rl-wheel-center" id="rlWheelCenter">?</div>
+            </div>
+            <div class="rl-result" id="rlResult">Зробіть ставки</div>
+            <div class="rl-history-title">Останні числа</div>
+            <div class="rl-history" id="rlHistory"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
